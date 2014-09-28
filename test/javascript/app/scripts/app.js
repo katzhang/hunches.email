@@ -39,6 +39,18 @@ var apiKey = 'AIzaSyAH8RDk8TZmMN1LuVdgW1w4ixpJWE94dSg';
 
 var scopes = 'https://www.googleapis.com/auth/plus.me';
 
+
+function auth() {
+      var config = {
+        'client_id': '481653505775-tvpdbhtbmmpf7fasgnm8o69ro31fou40.apps.googleusercontent.com',
+        'scope': 'https://www.googleapis.com/auth/urlshortener'
+      };
+      gapi.auth.authorize(config, function() {
+        console.log('login complete');
+        console.log(gapi.auth.getToken());
+      });
+    }
+
 function handleClientLoad() {
   // Step 2: Reference the API key
   gapi.client.setApiKey(apiKey);

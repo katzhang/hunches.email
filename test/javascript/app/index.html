@@ -23,7 +23,8 @@
     <!-- Add your site or application content here -->
     <div class="container">
       <div id="content"></div>
-      <button id="authorize-button" style="visibility: hidden">Authorize</button>
+      <div id="results"></div>
+      <button id="authorize-button" onclick="auth();">Authorize</button>
     </div>
 
 
@@ -64,7 +65,7 @@
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/controllers/about.js"></script>
-    <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+    <script src="https://apis.google.com/js/client.js"></script>
     <!-- endbuild -->
 </body>
 </html>
