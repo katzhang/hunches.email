@@ -27,6 +27,9 @@ angular
         templateUrl: 'views/form.html',
         controller: 'AboutCtrl'
       })
+      .when('/archives', {
+        templateUrl: 'views/list.html'
+      })
       .otherwise({
         redirectTo: '/'
       });
@@ -34,7 +37,18 @@ angular
   .controller('defaultCtrl', function($scope) {
 
     $scope.hunches = [
-      {content: 'I think xxx is a good idea.'}
+      { 
+        content: 'I think xxx is a good idea.',
+        date: 123
+      },
+      { 
+        content: 'Another idea',
+        date: 456
+      },
+      { 
+        content: 'Bad-ass ideas!',
+        date: 789
+      }, 
     ]
 
 
