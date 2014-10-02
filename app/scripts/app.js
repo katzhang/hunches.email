@@ -39,17 +39,19 @@ angular
     $scope.hunches = [
       { 
         content: 'I think xxx is a good idea.',
-        date: 123
+        date: 1
       },
       { 
         content: 'Another idea',
-        date: 456
+        date: 3
       },
       { 
         content: 'Bad-ass ideas!',
-        date: 789
+        date: 2
       }, 
-    ]
+    ];
+
+    $scope.predicate = 'date';
 
 
     $scope.addNewHunch = function(newItem) {

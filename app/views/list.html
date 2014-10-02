@@ -1,11 +1,11 @@
 <table class="table">
 	<thead>
 		<tr>
-			<th>Content</th>
-			<th>Date</th>
+			<th><button type="button" class="btn btn-default" ng-click="predicate='content';reverse=false">Content</button></th>
+			<th><button type="button" class="btn btn-default" ng-click="predicate='date';reverse=!reverse">Date</button></th>
 		</tr>
 	</thead>
-	<tr ng-repeat="hunch in hunches">
+	<tr ng-repeat="hunch in hunches | orderBy: predicate:reverse">
 		<td>{{hunch.content}}</td>
 		<td>{{hunch.date}}</td>
 	</tr>
