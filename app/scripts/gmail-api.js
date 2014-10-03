@@ -19,10 +19,36 @@ var gmailApi = gmailApi || {};
 	}
 
 	gmailApi.checkAuth = function() {
-		gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: true}, handleAuthResult);
+		gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: true}, gmailApi.handleAuthResult);
 	}
 
-	gmailApi.handleAuthResult = function() {
-		
+	gmailApi.handleAuthResult = function(authResult) {
+		var authorizeButton = document.getElementById('authorize-button');
+		console.log('handleAuthResult');
+		if (authResult && !authResult.error) {
+			authorizeButton.style.visibility = 'hidden';
+			gmailApi.makeApiCall();
+		} else {
+			authorizeButton.style.visibility = '';
+			authorizeButton.onclick = gmailApi.handleAuthClick;
+		}
 	}
+
+	gmailApi.handleAuthClick = function(event) {
+		gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: false}, gmailApi.handleAuthResult);
+		return false;
+	}
+
+	gmailApi.makeApiCall = function() {
+		gapi.client.load('gmail', 'v1', function() {
+			var request = gapi.client.gmail.users.messages.list({
+				'userId': 'me'
+			})
+
+			request.execute(function(response) {
+				console.log(response);
+			})
+		})
+	}
+
 })()
